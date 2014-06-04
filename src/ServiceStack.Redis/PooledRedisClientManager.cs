@@ -199,7 +199,7 @@ namespace ServiceStack.Redis
         /// Returns a Read/Write client (The default) using the hosts defined in ReadWriteHosts
         /// </summary>
         /// <returns></returns>
-        public IRedisClient GetClient()
+        public virtual IRedisClient GetClient()
         {
             lock (writeClients)
             {
@@ -385,7 +385,7 @@ namespace ServiceStack.Redis
             return null;
         }
 
-        public void DisposeClient(RedisNativeClient client)
+        public virtual void DisposeClient(RedisNativeClient client)
         {
             lock (readClients)
             {
@@ -422,7 +422,7 @@ namespace ServiceStack.Redis
         /// Disposes the read only client.
         /// </summary>
         /// <param name="client">The client.</param>
-        public void DisposeReadOnlyClient(RedisNativeClient client)
+        public virtual void DisposeReadOnlyClient(RedisNativeClient client)
         {
             lock (readClients)
             {
@@ -435,7 +435,7 @@ namespace ServiceStack.Redis
         /// Disposes the write client.
         /// </summary>
         /// <param name="client">The client.</param>
-        public void DisposeWriteClient(RedisNativeClient client)
+        public virtual void DisposeWriteClient(RedisNativeClient client)
         {
             lock (writeClients)
             {

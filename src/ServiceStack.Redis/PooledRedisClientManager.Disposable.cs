@@ -41,7 +41,7 @@ namespace ServiceStack.Redis
             }
         }
 
-        public DisposablePooledClient<T> GetDisposableClient<T>() where T : RedisNativeClient
+        public virtual DisposablePooledClient<T> GetDisposableClient<T>() where T : RedisNativeClient
         {
             return new DisposablePooledClient<T>(this);
         }
